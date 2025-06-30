@@ -1,9 +1,9 @@
-FROM node:20 AS builder
+FROM oven/bun:latest AS builder
 
 WORKDIR /app
 
-# Enable pnpm via corepack
-RUN corepack enable && pnpm config set store-dir /root/.pnpm-store
+# Install pnpm
+RUN npm install -g pnpm && pnpm config set store-dir /root/.pnpm-store
 
 # Install dependencies and build the project
 COPY package.json pnpm-lock.yaml ./
