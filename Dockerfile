@@ -2,8 +2,8 @@ FROM oven/bun:latest AS builder
 
 WORKDIR /app
 
-# Install pnpm using bun
-RUN bun add -g pnpm && pnpm config set store-dir /root/.pnpm-store
+# Install pnpm
+RUN npm install -g pnpm && pnpm config set store-dir /root/.pnpm-store
 
 # Install dependencies and build the project
 COPY package.json pnpm-lock.yaml ./
