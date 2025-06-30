@@ -132,7 +132,9 @@ export const currencyFormaterMap: Record<NumberFormat, (n: number) => string> = 
       ...commonProps,
       currency: 'NOK',
       currencyDisplay: 'code',
-    }).format(n),
+    })
+      .format(n)
+      .replace(/(.+)\u00A0NOK$/, 'NOK\u00A0$1'),
   [NumberFormat.MexicanPeso]: (n: number) =>
     new Intl.NumberFormat('es-MX', {
       ...commonProps,
